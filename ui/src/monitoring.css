@@ -1,0 +1,74 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f6fb;
+  color: #17243b;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 22px clamp(18px, 4vw, 56px); background: #122443; color: white;
+}
+.topbar h1 { margin: 3px 0 0; font-size: clamp(22px, 3vw, 30px); }
+.portal-link { display: inline-block; margin-top: 7px; color: #c6d3e8; font-size: 12px; }
+.eyebrow { margin: 0; color: #8da7d2; letter-spacing: .16em; font-weight: 700; font-size: 11px; }
+.connection { display: grid; gap: 6px; min-width: min(390px, 100%); font-size: 12px; color: #c6d3e8; }
+.connection-row { display: flex; gap: 8px; }
+input, select, button { font: inherit; }
+input { min-width: 0; flex: 1; border: 1px solid #536783; border-radius: 6px; background: #1b3154; color: white; padding: 10px 12px; }
+button, select { border: 0; border-radius: 6px; padding: 10px 14px; cursor: pointer; }
+button { background: #356bd6; color: white; font-weight: 650; }
+button:hover { background: #285bbb; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+#connection-state { color: #9db4d8; }
+main { max-width: 1440px; margin: auto; padding: 26px clamp(16px, 4vw, 56px) 48px; }
+.toolbar, .panel-heading, .controls { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.toolbar { margin-bottom: 20px; }
+h2 { font-size: 17px; margin: 0; }
+.toolbar p, .panel-heading p { color: #71809a; font-size: 13px; margin: 5px 0 0; }
+.controls { font-size: 12px; color: #64728a; }
+.controls select { background: white; border: 1px solid #d5deeb; color: #233653; }
+#last-updated { min-width: 132px; text-align: right; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
+.card, .panel { background: white; border: 1px solid #e1e7f0; border-radius: 10px; box-shadow: 0 2px 8px #1a34540a; }
+.card { padding: 18px 20px; display: grid; gap: 8px; }
+.card span { font-size: 13px; color: #64728a; }
+.card strong { font-size: 29px; font-weight: 700; letter-spacing: -.03em; }
+.card small { color: #8491a6; font-size: 11px; }
+.card.alert strong { color: #b93838; }
+.charts { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(260px, 1fr); gap: 14px; margin-bottom: 14px; }
+.panel { padding: 18px 20px; margin-bottom: 14px; min-width: 0; }
+.panel-heading { margin-bottom: 16px; }
+.status-list { display: grid; gap: 12px; }
+.status-row { display: grid; grid-template-columns: 90px 1fr 32px; align-items: center; gap: 10px; font-size: 12px; }
+.status-track { height: 9px; border-radius: 8px; background: #edf1f7; overflow: hidden; }
+.status-fill { height: 100%; border-radius: inherit; background: #4a78d0; }
+.status-queued .status-fill { background: #e2a632; }
+.status-running .status-fill { background: #4982df; }
+.status-succeeded .status-fill { background: #31a474; }
+.status-failed .status-fill { background: #d65050; }
+.status-cancelled .status-fill { background: #8995a8; }
+.table-wrap { width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; white-space: nowrap; text-align: left; font-size: 12px; }
+th { color: #74829a; font-weight: 600; background: #f7f9fc; }
+th, td { padding: 11px 10px; border-bottom: 1px solid #edf0f5; }
+td { color: #34445e; }
+.empty { text-align: center; color: #8995a8; padding: 24px; }
+.pill { display: inline-block; border-radius: 99px; padding: 4px 8px; background: #edf1f7; font-size: 11px; }
+.pill.failed { background: #fff0ef; color: #ae3838; }
+.pill.succeeded { background: #e9f8f1; color: #24784f; }
+.pill.running { background: #edf4ff; color: #315ea7; }
+.error-banner { border: 1px solid #f3c4c0; background: #fff3f1; color: #a53d33; border-radius: 8px; padding: 12px 15px; margin-bottom: 16px; font-size: 13px; }
+@media (max-width: 850px) {
+  .topbar, .toolbar { align-items: stretch; flex-direction: column; }
+  .connection { min-width: 0; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .charts { grid-template-columns: 1fr; }
+  .controls { justify-content: flex-start; flex-wrap: wrap; }
+  #last-updated { text-align: left; }
+}

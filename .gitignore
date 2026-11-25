@@ -1,0 +1,11 @@
+.env
+.venv/
+ui/node_modules/
+ui/dist/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.db
+*.sqlite3
+.local-bootstrap.txt
+.local-admin-key

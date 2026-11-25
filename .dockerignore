@@ -1,0 +1,11 @@
+.git
+.venv
+__pycache__
+**/__pycache__
+*.py[cod]
+.pytest_cache
+.local-admin-key
+qc_platform.db
+ui/node_modules
+ui/dist
+dist
