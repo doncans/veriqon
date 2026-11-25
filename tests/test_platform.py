@@ -984,12 +984,13 @@ def test_api_allows_configured_ui_origin(platform):
         headers={
             "Origin": "http://127.0.0.1:8001",
             "Access-Control-Request-Method": "POST",
-            "Access-Control-Request-Headers": "authorization,content-type",
+            "Access-Control-Request-Headers": "authorization,content-type,idempotency-key",
         },
     )
     assert response.status_code == 200
     assert response.headers["access-control-allow-origin"] == "http://127.0.0.1:8001"
     assert "authorization" in response.headers["access-control-allow-headers"].lower()
+    assert "idempotency-key" in response.headers["access-control-allow-headers"].lower()
 
     untrusted = client.get("/health", headers={"Origin": "https://untrusted.example"})
     assert "access-control-allow-origin" not in untrusted.headers

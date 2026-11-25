@@ -51,7 +51,7 @@ def create_app(database_url: str | None = None) -> FastAPI:
         CORSMiddleware,
         allow_origins=UI_ORIGINS,
         allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-        allow_headers=["Accept", "Authorization", "Content-Type"],
+        allow_headers=["Accept", "Authorization", "Content-Type", "Idempotency-Key"],
         max_age=600,
     )
 
@@ -62,6 +62,16 @@ def create_app(database_url: str | None = None) -> FastAPI:
         response.headers.setdefault("X-Frame-Options", "DENY")
         response.headers.setdefault("Referrer-Policy", "no-referrer")
         response.headers.setdefault("Cache-Control", "no-store")
+        response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        if APP_ENV == "production":
+            response.headers.setdefault(
+                "Content-Security-Policy",
+                "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+            )
+            response.headers.setdefault(
+                "Strict-Transport-Security",
+                "max-age=31536000; includeSubDomains",
+            )
         return response
 
     for router in (
